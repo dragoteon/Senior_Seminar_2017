@@ -1,0 +1,106 @@
+
+
+\documentclass{sig-alternate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[colorinlistoftodos]{todonotes}
+
+%%does there happen to be this weird thing called spellcheck for LaTeX?
+
+\begin{document}
+% --- Author Metadata here ---
+
+\conferenceinfo{UMM CSci Senior Seminar Conference, December 2017}{Morris, MN}
+\title{Machine Learning and Music Composition}
+\numberofauthors{1}
+\author{
+\alignauthor
+Daniel Woeste\\
+	\affaddr{Division of Math and Sicence}\\
+	\affaddr{University of Minnesota, Morris}\\
+	\affaddr{Morris, Minnesota, USA 56267}\\
+	\email{woest015@morris.umn.edu}
+}
+
+
+
+\maketitle
+\begin{abstract}
+
+\end{abstract}
+
+
+\section{Introduction}
+\label{sec:introduction}
+
+\section{Background}
+\label{sec:background}
+
+Things to explain
+
+-Machine Learning
+
+-Decision Trees
+	
+	-over fitting
+
+-Finite Automata
+
+\subsection{General Framework}
+\label{sec:framework}
+%%insert figure relevent to this section
+	All of the methods described in this paper share a similar framework that would be usefull to understand. The commonality between all of the methods is that every note is generated in relation to a cache of previous notes. Meaning that every note is dependant upon a set of notes before it, whether it is only the previous note or a larger set of notes. This allows the program to determine a melodic progression for the music. 
+
+\subsection{Methods}
+\label{sec:methods}
+
+	In this section, we will be describing three seperate subcategories of machine learning. The three subcategories of machine learning that we will be describing are \textit{random forests},\textit{ markov chains}, and \textit{neural networks}. 
+%%currently hating figures because I cannot get it to place in the way that I want. 
+%%Nic please HELP!
+
+
+
+%%Need to chance will be describing to we describe.
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{"./Graphics/Markov Chain Finite Automata".jpg}
+	\caption{Finite automata detailing the Markov Generated in Automatic Composition of Music with Methods of Computational Intelligence}
+	\label{fig:markovchain1}
+\end{figure}
+	First, we discuss the use of Random Forests. Random forests operate by generating and altering a large collection of descision trees. The generated output of the random forest is the result of the average answer of all of the decision trees in the forest. As with all machine learing a set of amount of time is required to teach the algorithm to properly generate answers. For the case of Random Forest, each descision tree is made on only a small part of the set of data, with overlap among all of the trees. This overlap in the data that the trees are built on helps to reduce over fitting of the trees to the data. When it comes to music we discuss a program known as ALYSIA, that uses two random forests to generate music  from a given set of lyrics.
+	
+	Next, markov chains function  fundamentally differently than random forests. Markov chains ues a state machine and a statistical models to predicte the next value. Figure 1 shows a simple finite autaomata for a markov chain, containing only the possibility of having quarter, half, or whole notes, that was generated fo the paper Automatic Composition of Music with Methods of Computational Intelligence. The automata visualizes the way the markov chain uses probabilistic determination to predict what the next note or value will be. In the terms of music this means that for each state in the automata it has a percentage chance of moving to each of the other nodes in the automata. In this case,  the first note will be a quarter note with an 80\% chance of having a repeated quarter note, and only a 10\% chance of having a half note following. 
+
+	Neural Networks offer yet another approach to using computers to generate music, this time being a determistic style of algorithm.  \todo[inline]{Need to add much more to the section on neural networks.}
+
+\section{Methods and Music}
+	In this section, we will dicussing how the previously stated methods can be applied to the composition of music with specific examples. 
+
+\subsection{ALYSIA}
+\label{sec:ALYSIA}
+	ALYSIA, Automated LYrical Song-writing Application, is a program that uses random forests to generate songs and melodies for a given set of pop lyrics. ALYSIA contains to different random forests that work in tandem: one to produce rhythmn, the other to produce pitch values [ALYSIA]. Random forests can provide some inherent benefits over Markov chains. Even though both models work from a cache of previous notes and both predict what the next note should be. Markov chains offer only a statistical probability of what the next note should be, while random forests include a reasoning to what the next know should be. 
+
+\label{sec:methodsandmusic}
+\subsection{Citations}
+\label{sec:citations}
+
+\subsection{}
+\label{sec:theoremLikeConstructs}
+
+
+\subsection*{}
+\label{sec:caveatForExperts}
+
+
+
+\section*{Acknowledgments}
+\label{sec:acknowledgments}
+
+
+\todo[inline]{Fix the section heards because currently they are not organized in a way that makes sense.}
+\bibliographystyle{abbrv}
+%% Need to do proper citations and bibliography But I ran out of time. Will do for next iteration. 
+\bibliography{sample_paper}  
+
+
+\end{document}
