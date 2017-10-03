@@ -29,30 +29,43 @@ Daniel Woeste\\
 \begin{abstract}
 
 \end{abstract}
-
+\todo[inline]{in the background section,introduce topics: Decision Trees, Over Fitting, Machine Learning, Finite Automata and others.}
 
 \section{Introduction}
 \label{sec:introduction}
 
 \section{Background}
 \label{sec:background}
+	We use this section to introduce important terminology for the rest of the paper. 
 
-Things to explain
+\subsection{Music}
+\label{sec:music}
+	In this section we explain the terminology that is important to the music side of the paper.
+\subsubsection{Melody}
+\label{sec:melody}
 
--Machine Learning
 
--Decision Trees
-	
-	-over fitting
+\subsection{Computer Science}
+\label{sec:computerscience}
+	In this section we describe the terms that are important for understand the terminology related to computer science.
+\subsubsection{Decision Trees}
+\label{sec:decision_trees}
+\todo[inline]{Consider inserting an image about decsion trees if deemed necessary?}
+	Decision trees are a structure that repesent the tests and outcome of an algorith. Every node on the decision tree represents a possible test or choice that an algorithm can make. The resulting branches from that come from that node represent all of the possible outcomes of that test. This can easily be repesented by flipping a coin multiple times in a row. Every time the coin is flipped, a node is created in the descision tree. In this instance, the two nodes for the coin flip are heads and tails. For every subsequent coin flip, a new set of nodes and leaves are generated. This allows the decision tree to contain all possible out comes for the Nth coin flip. 
 
--Finite Automata
+\subsubsection{Overfitting}
+\label{sec:overfitting}
+	Overfitting is possible side effect that can occur with decision trees. When a decision tree is made and trained for an application, it can become too complex and dependant on the particular set of data that it was trained upon. This occurs when a tree gains too many parameters, making the tree too specific to the data that it was trained on, or the nodes the tree branches from are inconsequential to the actual results. A concequence of overfitting  happens when the tree is then tried on data different from what is was trained on. The tree looses its accurecy at prodicting what the possible results may be. 
+
+\subsection{Machine Learning}
+\label{sec:machinelearning}
 
 \subsection{General Framework}
 \label{sec:framework}
 %%insert figure relevent to this section
 	All of the methods described in this paper share a similar framework that would be usefull to understand. The commonality between all of the methods is that every note is generated in relation to a cache of previous notes. Meaning that every note is dependant upon a set of notes before it, whether it is only the previous note or a larger set of notes. This allows the program to determine a melodic progression for the music. 
 
-\subsection{Methods}
+\section{Methods}
 \label{sec:methods}
 
 	In this section, we will be describing three seperate subcategories of machine learning. The three subcategories of machine learning that we will be describing are \textit{random forests},\textit{ markov chains}, and \textit{neural networks}. 
