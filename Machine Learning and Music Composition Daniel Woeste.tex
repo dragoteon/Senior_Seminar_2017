@@ -43,6 +43,7 @@ Daniel Woeste\\
 	In this section we explain the terminology that is important to the music side of the paper.
 \subsubsection{Melody}
 \label{sec:melody}
+\todo[inline]{good music definitions, need to figure out how to work them into a conherent paragraph or 2}
 Melodic progression is the breaking down of the 8 note octave into equal parts.  Either whole steps of the 12 half steps or semitones.  
 Melody is the pitches and rhythm that are used to be aesthetically pleasing.  
 Thus a melodic progression uses various intervals- the whole steps or half steps in combinations that are pleasing, we hope, to the listener.  
@@ -58,7 +59,7 @@ Thus a melodic progression uses various intervals- the whole steps or half steps
 
 \subsubsection{Overfitting}
 \label{sec:overfitting}
-	Overfitting is possible side effect that can occur with decision trees. When a decision tree is made and trained for an application, it can become too complex and dependant on the particular set of data that it was trained upon. This occurs when a tree gains too many parameters, making the tree too specific to the data that it was trained on, or the nodes the tree branches from are inconsequential to the actual results. A concequence of overfitting  happens when the tree is then tried on data different from what is was trained on. The tree looses its accurecy at prodicting what the possible results may be. 
+	Overfitting is possible side effect that can occur with decision trees. When a decision tree is made and for an application, it can become too complex and dependant on the particular set of data that it was trained upon. This occurs when a tree gains too many parameters, making the tree too specific to the data that it was trained on, or the nodes the tree branches from are inconsequential to the actual results. A concequence of overfitting  happens when the tree is then tried on data different from what is was trained on. The tree looses its accurecy at prodicting what the possible results may be. 
 
 \subsection{Machine Learning}
 \label{sec:machinelearning}
@@ -66,6 +67,7 @@ Thus a melodic progression uses various intervals- the whole steps or half steps
 \subsection{General Framework}
 \label{sec:framework}
 %%insert figure relevent to this section
+%%Move the general framwork section into the 3rd section.
 	All of the methods described in this paper share a similar framework that would be usefull to understand. The commonality between all of the methods is that every note is generated in relation to a cache of previous notes. Meaning that every note is dependant upon a set of notes before it, whether it is only the previous note or a larger set of notes. This allows the program to determine a melodic progression for the music. 
 
 \section{Methods}
@@ -85,17 +87,24 @@ Thus a melodic progression uses various intervals- the whole steps or half steps
 \end{figure}
 	First, we discuss the use of random forests. Random forests operate by generating and altering a large collection of decision trees. The generated output of the random forest is the result of the average answer of all of the decision trees in the forest. As with all machine learning a set of amount of time is required to teach the algorithm to properly generate answers. For the case of random forest, each decision tree is made on only a small part of the set of data, with overlap among all of the trees. This overlap in the data that the trees are built on helps to reduce over fitting of the trees to the data. When it comes to music we discuss a program known as ALYSIA, that uses two random forests to generate music from a given set of lyrics.
 	
-	Next, markov chains function fundamentally differently than random forests. Markov chains use a state machine and a statistical models to predict the next value. Figure 1 shows a simple finite automata for a markov chain, containing only the possibility of having quarter, half, or whole notes, that was generated fo the paper Automatic Composition of Music with Methods of Computational Intelligence. The automata visualizes the way the markov chain uses probabilistic determination to predict what the next note or value will be. In the terms of music this means that for each state in the automata it has a percentage chance of moving to each of the other nodes in the automata. In this case, the first note will be a quarter note with an 80\% chance of having a repeated quarter note, and only a 10\% chance of having a half note following.
-
-	Neural networks offer yet another approach to using computers to generate music, this time being a deterministic style of algorithm. \todo[inline]{Need to add much more to the section on neural networks.}
+	Next, markov chains function fundamentally differently than random forests. Markov chains use a state machine and a statistical models to predict the next value.~ref\{fig:markovchain1} shows a simple finite automata that generates the note length, but not pitch values for a song. The values 1, 2, and 4 represent quarter, half, and whole notes respectively. The value of -4 is a starting state that holds no value musiclly, other than being a place to start the song. The automata visualizes the way the markov chain uses probabilistic determination to predict what the next note or value will be. In the terms of music this means that for each state in the automata it has a percentage chance of moving to each of the other nodes in the automata. In this case, the first note will be a quarter note with an 80\% chance of having a repeated quarter note, and only a 10\% chance of having a half note following.
+\todo[inline]{introduce the word trained instead of generated to make sense with the neural networks paragraph}
+	
+	Neural networks offer yet another approach to using computers to generate music, this time being a deterministic style of algorithm. Neurals networks are a style of machine learing that is based upom the functions of the human brain. This is done by generating many highy interconnected nodes (neurons) that are working together to solve a single problem. Similar to random forests, neural networks are trained upon a given set of data to produce a network that will produce a favorable. Unlike the previous two methods, neural networks are almost always deterministic, meaning for the same input a neural network will always have the same output. This differs fundamentally from the other two methods that really heavily on elemnts of chance to determine an outcome. 
 
 \section{Methods and Music}
-	In this section, we will discussing how the previously stated methods can be applied to the composition of music with specific examples.
+	In this section, we will discuss how the previously stated methods can be applied to the composition of music with specific examples.
 
 \subsection{ALYSIA}
 \label{sec:ALYSIA}
 	ALYSIA, Automated LYrical Song-writing Application, is a program that uses random forests to generate songs and melodies for a given set of pop lyrics. ALYSIA contains two different random forests that work in tandem: one to produce rhythm, the other to produce pitch values. [ALYSIA] Random forests can provide some inherent benefits over Markov chains. Even though both models work from a cache of previous notes and both predict what the next note should be. Markov chains offer only a statistical probability of what the next note should be, while random forests include a reasoning to what the next note should be. 
+	
+	ALYSIA is able to encode a reason for the next note because, instead of relying on entirely random chance for the next note, it uses a system known as function known as feature extraction to determine the shape of the background music that the ALYSIA is trying to compose music to. The feature extractions includes parameters such as key signature, time signature, note duration, accidental, and many others. It even includes feature extraction for the lyrics that ALYSIA is trying to match as well; such as, word frequency, and even word vowel strength (value extracted from CMUDict v0.07 database.) This function allows ALYSIA to examine the previous few notes of the melody, if not the entire melody, in order to predict what the best next note will be.
+\todo[inline]{talk about the co creative nature of ALYSIA mentioned in the paper}
 
+
+	
+	
 
 \label{sec:methodsandmusic}
 \subsection{Citations}
