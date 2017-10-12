@@ -55,7 +55,11 @@ The texture of the music also plays an important role in the style of music that
 	Machine learning, a subcategory of artificial intelligence, is an area of computer science that focuses on programs that are able to systematically change themselves based upon a learning period. These programs are designed to alter themselves without the need for human input, these style of programs are beneficial due to the fact that they are not as strictly bound to a set of instruction. Instead, during the learning period, the programs are able to change themselves to best fit however they data demands that work. This style of data driven learning allows machine learning programs to be well suited for areas such as self driving cars, text prediction, online recommendations, and even the complex field of music.
 \subsubsection{Decision Trees}
 \label{sec:decision_trees}
-\todo[inline]{Consider inserting an image about decision trees if deemed necessary?}
+\begin{figure}
+	\includegraphics[width=\linewidth]{"./Graphics/Descision_tree_example".jpg}
+	\caption{Descision tree example}
+	\label{fig:descisiontree}
+\end{figure}
 	Decision trees are a structure that represent the tests and outcome of an algorithm. Every node on the decision tree represents a possible test or choice that an algorithm can make. The resulting branches from that come from that node represent all of the possible outcomes of that test. This can easily be represented by flipping a coin multiple times in a row. Every time the coin is flipped, a node is created in the decision tree. In this instance, the two nodes for the coin flip are heads and tails. For every subsequent coin flip, a new set of nodes and leaves are generated. This allows the decision tree to contain all possible outcomes for the Nth coin flip.
 
 \subsubsection{Overfitting}
@@ -78,15 +82,17 @@ The texture of the music also plays an important role in the style of music that
 %%Nic please HELP!
 
 %%Need to chance will be describing to we describe.
+
+	First, we discuss the use of random forests. Random forests operate by generating and altering a large collection of decision trees. The generated output of the random forest is the result of the average answer of all of the decision trees in the forest. As with all machine learning a set of amount of time is required to teach the algorithm to properly generate answers. For the case of random forest, each decision tree is made on only a small part of the set of data, with overlap among all of the trees. This overlap in the data that the trees are built on helps to reduce over fitting of the trees to the data. When it comes to music we discuss a program known as ALYSIA, that uses two random forests to generate music from a given set of lyrics.
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{"./Graphics/Markov Chain Finite Automata".jpg}
 	\caption{Finite automata detailing the Markov Generated in Automatic Composition of Music with Methods of Computational Intelligence}
 	\label{fig:markovchain1}
 \end{figure}
-	First, we discuss the use of random forests. Random forests operate by generating and altering a large collection of decision trees. The generated output of the random forest is the result of the average answer of all of the decision trees in the forest. As with all machine learning a set of amount of time is required to teach the algorithm to properly generate answers. For the case of random forest, each decision tree is made on only a small part of the set of data, with overlap among all of the trees. This overlap in the data that the trees are built on helps to reduce over fitting of the trees to the data. When it comes to music we discuss a program known as ALYSIA, that uses two random forests to generate music from a given set of lyrics.
-	
 	Next, markov chains function fundamentally differently than random forests. Markov chains use a state machine and a statistical models to predict the next value. Figure 1 shows a simple finite automata that generates the note length, but not pitch values for a song. The values 1, 2, and 4 represent quarter, half, and whole notes respectively. The value of -4 is a starting state that holds no value musically, other than being a place to start the song. The automata visualizes the way the markov chain uses probabilistic determination to predict what the next note or value will be. In the terms of music this means that for each state in the automata it has a percentage chance of moving to each of the other nodes in the automata. In this case, the first note will be a quarter note with an 80\% chance of having a repeated quarter note, and only a 10\% chance of having a half note following.
 \todo[inline]{introduce the word trained instead of generated to make sense with the neural networks paragraph}	
+
+
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{"./Graphics/neural_network_diagram".jpg}
 	\caption{example of a neural network}
@@ -103,7 +109,14 @@ The texture of the music also plays an important role in the style of music that
 	ALYSIA is able to encode a reason for the next note because, instead of relying on entirely random chance for the next note, it uses a system known as function known as feature extraction to determine the shape of the background music that the ALYSIA is trying to compose music to. The feature extractions includes parameters such as key signature, time signature, note duration, accidental, and many others. It even includes feature extraction for the lyrics that ALYSIA is trying to match as well; such as, word frequency, and even word vowel strength (value extracted from CMUDict v0.07 database.) This function allows ALYSIA to examine the previous few notes of the melody, if not the entire melody, in order to predict what the best next note will be.
 \todo[inline]{talk about the co creative nature of ALYSIA mentioned in the paper}
 
-	Next we will examine neural networks that were used to generate an entirely different style of music, polyphonic music. Polyphonic music is a more complicated style of music that contains multiple melody lines being played all at once. This adds an added level of complication to what the neural network has to keep track of due to complexities of music in relation to music patterns and harmonic relations between the multiple lines of music. The paper by Daniel D. Johnson covers several types of neural networks including \textit{recurrent neural networks} based upon the \textit{long short-term memory} system. \todo[inline]{help!, i am confused by the lstm and how they work and the recurrent network...and everything}
+\subsection{LSTM and RNN}
+\label{sec:lstm}
+	Next we will examine neural networks that were used to generate an entirely different style of music, polyphonic music. Polyphonic music is a more complicated style of music that contains multiple melody lines being played all at once. This adds an added level of complication to what the neural network has to keep track of due to complexities of music in relation to music patterns and harmonic relations between the multiple lines of music. The paper by Daniel D. Johnson covers several types of neural networks including \textit{recurrent neural networks} (RNN) based upon the \textit{long short-term memory} system (LSTM).
+
+	 A recurrent neural network is very similar to the neural networks that were described above. The difference between to two is that instead of having several layers of nodes that always progress from one layer to next, in a forward motion, recurrent networks allow for backwards travel along the network. Meaning that as a node completes an operation, the transition (arrow pointing to next node) may not point at a node in the next layer. The transition can be back to the node itself, or even to a node in the previous layers.
+	
+	Long short-term memory is a specific alteration to RNN style that allows the program to store dependencies, what can be considered as previous context, throughout iterations of the network. This works type of model is particularly well suited for the generation of much becuase every note is dependant upon the notes before it to make a current melody. The long term memory of the network to determine a context of the music, better allowing the program to come up with a coherent next note. For example, an RNN with LSTM would be able to remember what key the music is in, for this instance lets say C major, and it would also be able to remember key musical features such an ascending melodic line. With this knowledge the network could determine that the appropriate following action might be a descending musical line. 
+
 	
 	
 
@@ -111,21 +124,13 @@ The texture of the music also plays an important role in the style of music that
 \subsection{Citations}
 \label{sec:citations}
 
-\subsection{}
-\label{sec:theoremLikeConstructs}
-
-
-\subsection*{}
-\label{sec:caveatForExperts}
-
-
-
 \section*{Acknowledgments}
 \label{sec:acknowledgments}
 
 
 \todo[inline]{Fix the section heads because currently they are not organized in a way that makes sense.}
-
+\todo[inline]{the picture on descision trees needs to be smaller than it is currently}
+\todo[inline]{there is some weird spacing with the picture about markov chains that I dont really understand why thats going on}
 
 
 
