@@ -60,7 +60,7 @@ The texture of the music also plays an important role in the style of music that
 	Machine learning, a subcategory of artificial intelligence, is an area of computer science that focuses on programs that are able to systematically change themselves based upon a learning period. These programs are designed to alter themselves without the need for human input, these style of programs are beneficial due to the fact that they are not as strictly bound to a set of instruction. Instead, during the learning period, the programs are able to change themselves to best fit however they data demands that work. This style of data driven learning allows machine learning programs to be well suited for areas such as self driving cars, text prediction, online recommendations, and even the complex field of music.
 \subsubsection{Decision Trees}
 \label{sec:decision_trees}
-\begin{figure}
+\begin{figure}[!]
 	\includegraphics[width=\linewidth]{"./Graphics/Descision_tree_example".jpg}
 	\caption{Descision tree example}
 	\label{fig:descisiontree}
@@ -84,11 +84,7 @@ The texture of the music also plays an important role in the style of music that
 %%Need to chance will be describing to we describe.
 
 	First, we discuss the use of random forests. Random forests operate by generating and altering a large collection of decision trees. The generated output of the random forest is the result of the average answer of all of the decision trees in the forest. As with all machine learning a set of amount of time is required to teach the algorithm to properly generate answers. For the case of random forest, each decision tree is made on only a small part of the set of data, with overlap among all of the trees. This overlap in the data that the trees are built on helps to reduce over fitting of the trees to the data. When it comes to music we discuss a program known as ALYSIA, that uses two random forests to generate music from a given set of lyrics.
-\begin{figure}[H]
-	\includegraphics[width=\linewidth]{"./Graphics/Markov Chain Finite Automata".jpg}
-	\caption{Finite automata detailing the Markov Generated in Automatic Composition of Music with Methods of Computational Intelligence}
-	\label{fig:markovchain1}
-\end{figure}
+
 	Next, markov chains function fundamentally differently than random forests. Markov chains use a state machine and a statistical models to predict the next value. Figure 1 shows a simple finite automata that generates the note length, but not pitch values for a song. The values 1, 2, and 4 represent quarter, half, and whole notes respectively. The value of -4 is a starting state that holds no value musically, other than being a place to start the song. The automata visualizes the way the markov chain uses probabilistic determination to predict what the next note or value will be. In the terms of music this means that for each state in the automata it has a percentage chance of moving to each of the other nodes in the automata. In this case, the first note will be a quarter note with an 80\% chance of having a repeated quarter note, and only a 10\% chance of having a half note following.
 \todo[inline]{introduce the word trained instead of generated to make sense with the neural networks paragraph}	
 
@@ -99,6 +95,13 @@ The texture of the music also plays an important role in the style of music that
 	\label{fig:neuralnetexample}
 \end{figure}
 	
+
+\begin{figure}[!]
+	\includegraphics[width=\linewidth]{"./Graphics/Markov Chain Finite Automata".jpg}
+	\caption{Finite automata detailing the Markov Generated in Automatic Composition of Music with Methods of Computational Intelligence}
+	\label{fig:markovchain1}
+\end{figure}
+
 	Neural networks offer yet another approach to using computers to generate music, this time being a deterministic style of algorithm. Neurals networks are a style of machine learning that is based upon the functions of the human brain. This is done by generating many highly interconnected nodes (neurons) that are working together to solve a single problem. Similar to random forests, neural networks are trained upon a given set of data to produce a network that will produce a favorable. Unlike the previous two methods, neural networks are almost always deterministic, meaning for the same input a neural network will always have the same output. This differs fundamentally from the other two methods that rely heavily on elements of chance to determine an outcome.
 \section{Methods and Music}
 	In this section, we will discuss how the previously stated methods can be applied to the composition of music with specific examples.
@@ -144,7 +147,7 @@ The texture of the music also plays an important role in the style of music that
 
 \todo[inline]{Fix the section heads because currently they are not organized in a way that makes sense.}
 \todo[inline]{the picture on descision trees needs to be smaller than it is currently}
-\todo[inline]{there is some weird spacing with the picture about markov chains that I dont really understand why thats going on}
+\todo[inline]{I know the markov chain graphic is in a very weird spot, but there was a weird spacing issue with it earlier so currently i have it placed there to get rid of the spacing problem}
 
 
 
