@@ -35,6 +35,8 @@ Random Forests, Markov Chains, Neural Networks, Machine Learning
 \section{Introduction}
 \label{sec:introduction}
 
+Music has become an almost daily part of our lives, whether it is through background grounds in movies, commercials, or even listening to it for the sake of listening to a song. For many of us, our interactions with music are mostly a passive experience, listening rather than contributing. Recent advancements in machine learning may give people the chance to produce music tailored to their personal music tastes. These programs can be used as musical assistance to enhance or fill in gaps in musical knowledge. They can also be used to autonomously generate music without much input from the end user. 
+
 \section{Background}
 \label{sec:background}
 	We use this section to introduce important terminology used to understand concepts throughout the paper. 
@@ -90,7 +92,11 @@ A possible side effect with decision trees and all types of machine learning is 
 	Finite automata, otherwise known as finite state machines, are representations of an abstract computational model, see Figure~\ref{fig:markovchain1}. These state machines can only exist in one position at a time. Finite state machines represent a stochastic model of the data. Every possible move is represented by a probability, but the path through the automata is chosen at random, following the probabilities. In Figure~\ref{fig:markovchain1}, the automata starts on the node with negative four, also denotes by the arrow head. From there it transitions to the next possible state, the node with a value of one, or a quarter note. It will continue these transistion until it reaches the last node with a value of four, the node with a  double circle.These models work well for music. For instance, a developing music rhythm can be thought of stepping through an automata, giving each new note a specific chance to be a given value such as quarter or half note. 
 
 
-%Finite automata, otherwise known as finite state machines, are representations of an abstract computational model that can exist in only one state at a time. The transition from one state to another is caused by external inputs to finite automata. Every finite automata has a start state, denoted by the arrow head, and an end state, denoted by the double circle. The finite automata listen below deviates from these notations, the start state is the state with the value of negative four, and the end state is the state with the value of four. The values one, two, and four represent quarter notes, half notes, and whole ntoes respectively.
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{"./Graphics/Markov Chain Jflap".jpg}
+	\caption{Finite automata detailing the Markov Generated in Automatic Composition of Music with Methods of Computational Intelligence}
+	\label{fig:markovchain1}
+\end{figure}
 
 \section{Methods}
 \label{sec:methods}
@@ -107,23 +113,20 @@ A possible side effect with decision trees and all types of machine learning is 
 	\caption{example of a neural network}
 	\label{fig:neuralnetexample}
 \end{figure}
-	
 
-\begin{figure}[H]
-	\includegraphics[width=\linewidth]{"./Graphics/Markov Chain Jflap".jpg}
-	\caption{Finite automata detailing the Markov Generated in Automatic Composition of Music with Methods of Computational Intelligence}
-	\label{fig:markovchain1}
-\end{figure}
+\todo[inline]{Change picture to a more simple neural network}
+	
 
 	Another approach to computer generation of music is neural networks. They are a style of machine learning that is based loosely upon the functions of the human brain. This is accomplished by generating many highly interconnected nodes (neurons) that are working together to solve a single problem. Similar to random forests, neural networks are trained upon a given set of data to produce a network that will generate a melody. Unlike the previous two methods, neural networks are almost always deterministic. This means for the same input given, a neural network will always have the same output. This differs fundamentally from the other methods which rely heavily on elements of chance to determine an outcome.
 
 \section{Methods and Music}
+\label{sec:methodsandmusic}
 	In this section, we will discuss how the previously stated methods can be applied to the composition of music with specific examples.
 \subsection{Markov Chains}
 \label{sec:markovmethods}
 	The program based upon markov chains in Klinger et al produces melodic lines by running the produced music through multiple iterations of the program. Each iteration of the music focuses on the generation of a new layer of music. The first iteration of the music is used to generate a simple rhythmic pattern for the rest of the program to alter. Figure~\ref{fig:markovchain1} shows a simplistic version of a markov chain generated to produce simplistic patterns of only quarter and half notes, with a melody that always ends in a whole note.
 
-	The resulting output from the rhythmic markov chain is then piped into a new markov chain that sets the pitches from the rhythm. To accomplish this, the program could use two different styles of markov chains. They are stated as an absolute or a relative markov chain in the Klinger paper. The difference between the two styles of markov chains is that for the absolute chain, it functions purely by choosing a note value to work with. In other words, it chooses one of the available notes in the octave (CDEFGABC) to use as the next note value. Conversely the relative markov chain uses interval length, or the distance from one pitch to the next to determine the next note. So instead of generating an A to a B transition, the relative markov chain would output a one-step transition. The benefit of the relative style is that it is less work to transpose the music from one to another; everything is based upon step distance rather than absolute note values.
+	The resulting output from the rhythmic markov chain is then piped into a new markov chain that sets the pitches from the rhythm. To accomplish this, the program could use two different styles of markov chains. They are labeled as an absolute or a relative markov chain in the Klinger paper. The difference between the two styles of markov chains is that for the absolute chain, it functions purely by choosing a note value to work with. In other words, it chooses one of the available notes in the octave (CDEFGABC) to use as the next note value. Conversely the relative markov chain uses interval length, or the distance from one pitch to the next to determine the next note. So instead of generating a transition from A to B, the relative markov chain would output a whole-step transition. The benefit of the relative style is that it is less work to transpose the music from one key to another; everything is based upon step distance rather than absolute note values.
 
 \begin{figure}[H]
 \centering
@@ -132,7 +135,7 @@ A possible side effect with decision trees and all types of machine learning is 
 	\label{fig:markovmelody2}
 \end{figure}
 
-	The last step to the markov model is labeled as post processing. The post processing of the music is a step that takes the already generated simplistic melody and then runs it through a last markov chain in an attempt the complicate the melody. The complication of the melody is an attempt to make the music more interesting to the listener. The post processing can be run as many times as the user feels necessary. The post processing can achieve these alteration through several methods: note splitting, one point mutation, and recombination.
+	The last step to the markov model is post processing. The post processing of the music is a step that takes the already generated simple melody and then runs it through a last markov chain to complicate the melody. The complication of the melody is an attempt to make the music more interesting to the listener. The post processing can be run as many times as the user feels necessary. The post processing can achieve these alterations through several methods: note splitting, one-point mutation, and recombination.
 
 \begin{figure}[H]
 \centering
@@ -143,7 +146,7 @@ A possible side effect with decision trees and all types of machine learning is 
 
 	One-point mutation is process of taking the melody and traversing over it with a low chance for each note to change pitch value.
 	
-	Note splitting is the similar to the one-point notation in the fact that it is traversal over the melody, but instead of the changing the pitch value of the note, it splits the note into an equal value of shorter duration notes. For example note splitting could change a quarter note into a run sixteenth notes.
+	Note splitting is similar to the one-point notation in the fact that it is traversal over the melody, but instead of the changing the pitch value of the note, it splits the note into an equal value of shorter duration notes. For example note splitting could change a quarter note into a run of sixteenth notes.
 
 \begin{figure}[H]
 \centering
@@ -152,29 +155,32 @@ A possible side effect with decision trees and all types of machine learning is 
 	\label{fig:markovmelody4}
 \end{figure}
 
-	Recombination works in an entirely different way than the previous two methods. The concept of recombination is taking two original parent melodies and combining them into a single child melody.
+	Recombination works in an entirely different way than the previous two methods. The concept of recombination is taking two original parent melodies, generated from two different runs of the previously stated program, and combining them into a single child melody.
 
 \subsection{ALYSIA}
 \label{sec:ALYSIA}
-	ALYSIA, Automated LYrical Song-writing Application, is a program that uses random forests to generate songs and melodies for a given set of pop lyrics. ALYSIA contains two different random forests that work in tandem: one to produce rhythm, the other to produce pitch values. [ALYSIA] ALYSIA has mainly been used to write new melodies for an already existing pop song. It takes in both a set of lyrics and the already existing accompaniment ,background music,  to to the pop song. ALYSIA then outputs several possible new melodies for the song. Random forests can provide some inherent benefits over Markov chains. Even though both models work from previous notes, and both predict what the next note should be, random forests and markov chains function based on different models. Markov chains offer only a statistical probability of what the next note should be. While random forests include a reasoning behind what the next note will be.
+	ALYSIA, Automated LYrical Song-writing Application, is a program that uses random forests to generate songs and melodies for a given set of pop lyrics. ALYSIA contains two different random forests that work in tandem: one to produce rhythm, the other to produce pitch values. [ALYSIA] ALYSIA has mainly been used to write new melodies for an already existing pop song. It takes in both a set of lyrics and the already existing accompaniment, background music,  to to the pop song. ALYSIA then outputs several possible new melodies for the song. Random forests can provide some inherent benefits over Markov chains. Even though both models work from previous notes, and both predict what the next note should be, random forests and markov chains function based on different models. Markov chains offer only a statistical probability of what the next note should be. While random forests include a reasoning behind what the next note will be.
 	
-	ALYSIA is able to encode a reason for the next note; instead of relying on entirely random chance for the next note, it uses a system known as feature extraction to determine the shape of the background music that the ALYSIA is trying to compose music for. The feature extractions includes parameters such as key signature, time signature, note duration, and many others. It additionally includes feature extraction for the lyrics that ALYSIA is trying to match. The feature extraction includes parameters such as, word frequency, and even word vowel strength (value extracted from CMUDict v0.07 database). This function allows ALYSIA to examine the previous few notes of the melody, if not the entire melody, in order to predict what the best next note will be.
+	ALYSIA is able to encode a reason for the next note; instead of relying on entirely random chance for the next note, it uses a system known as feature extraction to determine the shape of the background music that the ALYSIA is trying to compose music for. The feature extractions includes parameters such as key signature, time signature, note duration, and many others. It additionally includes feature extraction for the lyrics that ALYSIA is trying to match. The feature extraction includes parameters such as, word frequency, and syllable number (the syllable position within a word). This function allows ALYSIA to examine the previous few notes of the melody, if not the entire melody, in order to predict what the best next note will be.
 \todo[inline]{talk about the co creative nature of ALYSIA mentioned in the paper}
 
 \subsection{LSTM and RNN}
 \label{sec:lstm}
  	Some neural networks that were used to generate an entirely different style of music: polyphonic music. Polyphonic music is a more complicated style of music, containing multiple melody lines played at once. This adds an additional level of complication to what the neural network has to keep track of due to complexities of music in relation to music patterns and harmonic relations between the multiple lines of music. The paper by Daniel D. Johnson covers a type of neural networks kown as \textit{recurrent neural networks} (RNNs) based upon the \textit{long short-term memory} system (LSTM).
 
-	 A recurrent neural network is similar to the neural networks described in section~\ref{sec:methods}. The difference between the two is that instead of having several layers of nodes that always progress from one layer to next, in a forward motion, recurrent networks allow for backwards travel along the network. This means that as a node completes an operation, the transition, as indicated by the arrow pointing to the next node, might not point at a node in the next layer. It can transition back to the node itself or to a node in the previous layers.
+	 A recurrent neural network (RNN) is similar to the neural networks described in section~\ref{sec:methods}. The difference between the two is that instead of having several layers of nodes that always progress from one layer to next, in a forward motion, recurrent networks allow for backwards travel along the network, meaning that as a node completes an operation, the transition, as indicated by the arrow pointing to the next node, might not point at a node in the next layer. It can transition back to the node itself or to a node in the previous layers.
 	
-	Long short-term memory is a specific alteration to RNN style that allows the program to store dependencies, what can be considered as previous context, throughout iterations of the network. This type of model is particularly well suited for the generation of much because every note is dependent upon previous notes to make a current melody. The long term memory of the network determines  context of the music, better allowing the program to produce a coherent subsequent note. For example, an RNN with LSTM could remember what key the music is in, for instance the music is in C major, and it would additionally be able to remember key musical features such an ascending melodic line. With this knowledge the network could determine that the appropriate following action might be a descending musical line.
+	Long short-term memory (LSTM) is a specific alteration to RNNs that allows the program to store dependencies, that can be considered as previous context, throughout iterations of the network. This type of model is particularly well suited for the generation of music because every note is dependent upon previous notes to make a coherent melody. The long term memory of the network determines the context of the music. Using the context the RNN is able to produce the subsequent notes. For example, an RNN with LSTM could remember what key the music is in, for instance the music is in C major, and it would additionally be able to remember key musical features such an ascending melodic line. With this knowledge the network could determine that the appropriate following action might be a descending musical line.
 
 
+\section{Evaluation}
+\label{sec:evaluation}
 
+For a machine learning program to progress in its training, it must have some method of evaluating and understand whether it has produced a good melody. This can prove difficult for a machine to understand due to the very subjective nature of music. In this section we present a few of the methods that were used by the various papers to evaluate their progress. These methods include feature extraction by the markov chain program, confusion matrices by ALYSIA. These are just a few of the methods tried by the programs described in this paper.
 	
 	
 
-\label{sec:methodsandmusic}
+
 \subsection{Citations}
 \label{sec:citations}
 
@@ -184,6 +190,7 @@ A possible side effect with decision trees and all types of machine learning is 
 
 \todo[inline]{Fix the section heads because currently they are not organized in a way that makes sense.}
 \todo[inline]{fix placement of the decision tree example because aahh!}
+\todo[inline]{....add citations and get bib working}
 
 
 
